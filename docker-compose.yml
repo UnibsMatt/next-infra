@@ -1,0 +1,85 @@
+name: skillx
+services:
+  # Next.js Application
+  app:
+    build:
+      context: ./skillx-app
+      dockerfile: Dockerfile
+    container_name: skillx-app
+    restart: unless-stopped
+    image: skillx-app:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/skillx_db
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - app-network
+
+  # Django API
+  api:
+    build:
+      context: ./skillx-core
+      dockerfile: Dockerfile
+    container_name: skillx-api
+    restart: unless-stopped
+    image: skillx-api:latest
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:17-alpine
+    container_name: skillx-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=skillx_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:8.2.0-alpine
+    container_name: skillx-redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge
