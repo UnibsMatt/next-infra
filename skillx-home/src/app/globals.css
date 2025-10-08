@@ -1,0 +1,78 @@
+@import "tailwindcss";
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+:root {
+  color-scheme: light dark;
+  font-family: var(--font-work-sans), sans-serif;
+  /* Dark theme (default) */
+  --page-bg: #1f324f;
+  --text-color: #a7d5c0;
+  --muted-text: #b9b9c7;
+  --primary: #dfecc6;
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-hover: rgba(255, 255, 255, 0.14);
+  --border: rgba(255, 255, 255, 0.22);
+  --h1-size: clamp(2rem, 5vw, 3rem);
+  --h2-size: clamp(1.75rem, 4vw, 2.5rem);
+  --h3-size: clamp(1.5rem, 3vw, 2rem);
+  --h4-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  --h5-size: clamp(1.125rem, 2vw, 1.25rem);
+  --h6-size: clamp(1rem, 1.5vw, 1.125rem);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page-bg: #e9e9e9;
+  --text-color: #000;
+  --muted-text: #4b4b55;
+  --primary: #4f57ff;
+  --surface: rgba(0, 0, 0, 0.06);
+  --surface-hover: rgba(0, 0, 0, 0.1);
+  --border: rgba(0, 0, 0, 0.12);
+  --h1-size: clamp(2rem, 5vw, 3rem);
+  --h2-size: clamp(1.75rem, 4vw, 2.5rem);
+  --h3-size: clamp(1.5rem, 3vw, 2rem);
+  --h4-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  --h5-size: clamp(1.125rem, 2vw, 1.25rem);
+  --h6-size: clamp(1rem, 1.5vw, 1.125rem);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+}
+
+body {
+  margin: 0;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
+  background: var(--page-bg);
+  color: var(--text-color);
+}
+
+.theme-toggle {
+  color: var(--text-color);
+  border-radius: 8px;
+  padding: 2px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--surface-hover);
+  transform: scale(1.05);
+}
