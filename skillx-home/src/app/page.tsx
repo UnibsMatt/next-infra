@@ -1,9 +1,17 @@
 import Header from "@/components/Header";
-import { TrustedBy, Benefits, WhoAreWe } from "@/app/sections";
+import {
+  TrustedBy,
+  Benefits,
+  WhoAreWe,
+  TheBigPicture,
+  WhyChooseArea,
+  MapYourSuccess,
+  Footer,
+} from "@/app/sections";
 import Image from "next/image";
 export default function Home() {
   return (
-    <div className="p-8 space-y-8">
+    <div className="p-24 space-y-8">
       <Header />
       <div className="flex justify-between items-centertransparent-bg">
         <Image
@@ -27,6 +35,10 @@ export default function Home() {
         <Image src="/second.png" alt="Home" width={1000} height={1000} />
       </div>
       <WhoAreWe />
+      <TheBigPicture />
+      <WhyChooseArea />
+      <MapYourSuccess />
+      <Footer />
     </div>
   );
 }

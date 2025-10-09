@@ -52,9 +52,9 @@ export default function TrustedBy() {
               className="object-contain grayscale hover:grayscale-0 transition-all duration-300 mx-auto"
             />
           </div>
-          <hr className="w-full border-t border-white" />
         </div>
       </div>
+      <hr className="w-full border-t border-white" />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 export default function Benefits() {
   return (
-    <div className="w-full max-w-7xl">
+    <div className="w-full">
       <div className="text-left space-y-4 mb-12">
         <p className="text-xs text-white">Benefits</p>
         <p className="text-xl">We&apos;ve cracked the code.</p>

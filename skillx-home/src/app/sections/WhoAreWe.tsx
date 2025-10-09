@@ -7,7 +7,7 @@ export default function WhoAreWe() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div className="h-84 flex items-center justify-center">
+            <div className="h-72 flex items-center justify-center">
               <Image
                 src="/nic.png"
                 alt="Creative Solutions"
@@ -31,7 +31,7 @@ export default function WhoAreWe() {
 
           {/* Card 2 */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div className="h-84 flex items-center justify-center">
+            <div className="h-72 flex items-center justify-center">
               <Image
                 src="/nic.png"
                 alt="Creative Solutions"
@@ -53,7 +53,7 @@ export default function WhoAreWe() {
 
           {/* Card 3 */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div className="h-84 flex items-center justify-center">
+            <div className="h-72 flex items-center justify-center">
               <Image
                 src="/nic.png"
                 alt="Creative Solutions"

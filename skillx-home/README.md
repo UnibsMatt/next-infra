@@ -59,11 +59,13 @@ skillx-home/
 ### Installation
 
 1. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 2. **Start the development server**:
+
    ```bash
    npm run dev
    ```
@@ -282,6 +284,7 @@ npm run format:check
 ### Header Component
 
 Navigation header with:
+
 - Logo and branding
 - Theme toggle button
 - Responsive navigation
@@ -290,6 +293,7 @@ Navigation header with:
 ### Theme Toggle
 
 Dark/light mode toggle with:
+
 - System preference detection
 - Manual override capability
 - Smooth transitions
