@@ -44,7 +44,7 @@ EXPOSE 8000
 
 COPY entrypoint.sh ./
 
-RUN chmod +x entrypoint.sh && sed -i 's/\r$//' entrypoint.sh
+RUN chmod +x entrypoint.sh && sed -i 's/\r$//' entrypoint.sh && mkdir /app/staticfiles && chown -R appuser:appuser /app/staticfiles
 
 USER appuser
 

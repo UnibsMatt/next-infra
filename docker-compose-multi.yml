@@ -1,0 +1,47 @@
+services:
+  nginx:
+    image: nginx:alpine
+    hostname: nginx
+    restart: unless-stopped
+    ports:
+      - "${NGINX_PORT:-80}:80"  # host port
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - staticfiles:/staticfiles
+    depends_on:
+      - api
+  api:
+    build:
+      context: ./skillx-core
+      dockerfile: Dockerfile
+    hostname: api
+    restart: unless-stopped
+    image: skillx-api:latest
+    ports:
+      - "${API_PORT:-8000}:8000"
+    env_file:
+      - .env
+    volumes:
+      - staticfiles:/app/staticfiles
+    depends_on:
+      postgres:
+        condition: service_healthy
+  postgres:
+    image: postgres:17-alpine
+    hostname: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=skillx_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  staticfiles:

@@ -8,6 +8,7 @@ find . -name "*.pyc" -delete
 echo "Applying database migrations..."
 python manage.py migrate --noinput
 
+python manage.py createsuperuser --noinput || true
 # Collect static files
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
